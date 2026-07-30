@@ -147,6 +147,7 @@ The `schemas-json` output contains the full array of schema dictionaries, allowi
 | `data-model-source` | Path or URL to CSV or JSONLD data model file | Yes | - |
 | `data-types` | Comma-separated list of data types to generate schemas for (leave empty for all) | No | `''` |
 | `data-model-labels` | Label type to use: `class_label` or `display_label` | No | `class_label` |
+| `output-directory` | Directory to output generated schema files | No | `schemas` |
 
 ### About `data-model-labels`
 
@@ -193,14 +194,27 @@ on:
 
 ## Local Development and Testing
 
+### Running Unit Tests
+
+Install dependencies and run tests:
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+pip install "synapseclient[pandas,curator] @ git+https://github.com/Sage-Bionetworks/synapsePythonClient@fcf371f9bdeeaa8cf4ec0ea7c2446b7d20f35577"
+pip install pytest
+
+# Run tests
+pytest test -v
+```
+
 ### Building the Docker Container
 
 ```bash
 docker build -t generate-jsonschema-action .
 ```
 
-
-### Testing Locally
+### Testing with Docker
 
 #### On Unix/macOS (bash):
 
